@@ -1,4 +1,4 @@
-# Moises Lyrics Exporter Pro
+# Moises Lyrics Exporter 
 
 A Chrome extension that adds a **Lyrics** tab to the export dialog in [Moises Studio](https://studio.moises.ai) and lets you export a song's synced lyrics as **TTML, LRC, SRT, TXT or JSON**, with line-by-line or word-by-word (and syllable) timing.
 

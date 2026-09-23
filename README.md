@@ -182,4 +182,5 @@ This is an independent, unofficial tool. You need your own Moises account, and i
 
 ## License
 
-Add your license here (for example MIT).
+Copyright (c) 2026 nandoothjuuh. All rights reserved.
+This code is provided for use only. No permission is granted to modify or distribute it without the author's written consent.

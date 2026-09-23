@@ -413,7 +413,7 @@ document.addEventListener('keydown', (e) => {
 document.addEventListener('paste', (e) => {
   const pastedText = (e.clipboardData || window.clipboardData).getData('text');
   
-  if (/lyrics\.json/.test(pastedText) && /moises\.ai/.test(pastedText)) {
+  if (/lyrics[^\/]*\.json/.test(pastedText) && /moises\.ai/.test(pastedText)) {
     // Auto-populate manual URL if a lyrics URL is pasted
     if (document.activeElement === els.manualUrl) {
       e.preventDefault();

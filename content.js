@@ -8,7 +8,7 @@ console.log("🔧 [FRAME] URL:", location.href, "Top frame:", window.top === win
 (function() {
   console.log("🔧 [IIFE] Outer scope starting");
   
-  const LYRICS_PATTERN = /(?:api|d1)\.moises\.ai\/v3\/download\/.*\/operations\/LYRICS.*\/lyrics.*\.json/i;
+  const LYRICS_PATTERN = /(?:api|d\d+)\.moises\.ai\/v3\/download\/.*\/operations\/LYRICS.*\/lyrics.*\.json/i;
   console.log("🔧 [PATTERN] Regex pattern created:", LYRICS_PATTERN);
 
   const PAGE_HOOK_SOURCE = "moises-lyrics-exporter-page-hook";

@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Moises Lyrics Exporter Pro - Content Script v2.2
  */
 
@@ -448,6 +448,11 @@ async function run() {
                     document.querySelector('[data-testid="player-song-title"]') ||
                     document.querySelector('[class*="songTitle"]');
     let rawTitle = titleEl ? (titleEl.textContent || "").trim() : (document.title || "lyrics");
+    // Strip "Moises Play" / "Moises Studio" (and a separator before it) from the title
+    rawTitle = rawTitle
+      .replace(/\s*[-–—|·•:]?\s*Moises\s*(Play|Studio)\b/gi, "")
+      .replace(/[\s\-–—|·•:]+$/, "")
+      .trim() || "lyrics";
     let songTitle = opts.titleCase ? toTitleCase(rawTitle) : rawTitle;
     songTitle = sanitizeFilename(songTitle);
 

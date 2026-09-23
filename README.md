@@ -1,4 +1,4 @@
-# Moises Lyrics Exporter 
+# Moises Lyrics Exporter
 
 A Chrome extension that adds a **Lyrics** tab to the export dialog in [Moises Studio](https://studio.moises.ai) and lets you export a song's synced lyrics as **TTML, LRC, SRT, TXT or JSON**, with line-by-line or word-by-word (and syllable) timing.
 
@@ -109,7 +109,7 @@ Spans that directly follow each other without whitespace form a single word; whi
 | Confidence threshold | 0.7 | Words below this confidence are counted as "low confidence" in the export stats. |
 | Instrumental breaks | on | Add `♪` markers to LRC files. |
 | Title in Title Case | on | Convert the song title used as the filename to Title Case. |
-| Manual lyrics JSON URL | empty | Optional fallback: paste a `lyrics.json` URL from `api.moises.ai` / `d1.moises.ai` if automatic detection fails. |
+| Manual lyrics JSON URL | empty | Optional fallback: paste a lyrics JSON URL (e.g. `lyrics.json` or `lyrics_new_format.json`) from `api.moises.ai` or a `dN.moises.ai` host if automatic detection fails. |
 
 ---
 
@@ -128,7 +128,7 @@ Spans that directly follow each other without whitespace form a single word; whi
 | `activeTab`, `tabs` | Detect that the popup is used on a Moises tab and message the content script. |
 | `scripting` | Declared for script injection support. |
 | `notifications` | Show the "Lyrics File Found" notification. |
-| Host access to `studio.moises.ai`, `studio1.moises.ai`, `api.moises.ai`, `d1.moises.ai` | Run on Moises Studio and fetch the lyrics file for the song you have open. |
+| Host access to `studio.moises.ai`, `studio1.moises.ai`, `api.moises.ai`, `d1.moises.ai`, `d2.moises.ai` | Run on Moises Studio and fetch the lyrics file for the song you have open. |
 
 ### Privacy
 
@@ -172,6 +172,7 @@ content.js       Content script: capture lyrics, in-page UI, export logic
 page-hook.js     Page-context hook that observes Moises' network calls
 bg.js            Background service worker (fetching, notifications)
 popup.html/js/css  Toolbar popup and its styling
+icons/          Extension icons (16, 32, 48, 128 px PNG; icon512.png and icon.svg are source artwork)
 ```
 
 ---
@@ -179,6 +180,7 @@ popup.html/js/css  Toolbar popup and its styling
 ## Disclaimer
 
 This is an independent, unofficial tool. You need your own Moises account, and it only accesses lyrics that Moises already shows you. Song lyrics may be protected by copyright, so use exported files for personal purposes or with the necessary rights. You are responsible for complying with Moises' terms of service.
+
 
 ## License
 

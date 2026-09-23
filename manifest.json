@@ -14,7 +14,8 @@
     "https://studio.moises.ai/*",
     "https://studio1.moises.ai/*",
     "https://api.moises.ai/*",
-    "https://d1.moises.ai/*"
+    "https://d1.moises.ai/*",
+    "https://d2.moises.ai/*"
   ],
   "content_scripts": [
     {

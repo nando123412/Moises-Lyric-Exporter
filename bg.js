@@ -139,7 +139,7 @@ async function processQueue(tabId) {
  * Fetch with retry logic and proper headers
  */
 async function fetchWithRetry(url, maxRetries = 3) {
-  const LYRICS_PATTERN = /(?:api|d1)\.moises\.ai\/v3\/download\/.*\/operations\/LYRICS.*\/lyrics.*\.json/i;
+  const LYRICS_PATTERN = /(?:api|d\d+)\.moises\.ai\/v3\/download\/.*\/operations\/LYRICS.*\/lyrics.*\.json/i;
   
   console.log("🔧 [FETCH RETRY] Starting fetch with", maxRetries, "retries");
   

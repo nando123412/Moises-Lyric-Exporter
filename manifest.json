@@ -1,0 +1,62 @@
+{
+  "manifest_version": 3,
+  "name": "Moises Lyrics Exporter Pro",
+  "version": "2.0.1",
+  "description": "Extract, process, and export synced lyrics from Moises.ai with multiple formats and advanced options.",
+  "permissions": [
+    "scripting",
+    "activeTab",
+    "storage",
+    "tabs",
+    "notifications"
+  ],
+  "host_permissions": [
+    "https://studio.moises.ai/*",
+    "https://studio1.moises.ai/*",
+    "https://api.moises.ai/*",
+    "https://d1.moises.ai/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://studio.moises.ai/*",
+        "https://studio1.moises.ai/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "all_frames": true,
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "page-hook.js"
+      ],
+      "matches": [
+        "https://studio.moises.ai/*",
+        "https://studio1.moises.ai/*"
+      ]
+    }
+  ],
+  "background": {
+    "service_worker": "bg.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Moises Lyrics Exporter Pro",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

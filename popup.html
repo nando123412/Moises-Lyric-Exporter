@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moises Lyrics Exporter Pro</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    
+    <!-- Header -->
+    <header class="header">
+      <div class="brand">
+        <div class="brand-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18V5l12-2v13"></path>
+            <circle cx="6" cy="18" r="3"></circle>
+            <circle cx="18" cy="16" r="3"></circle>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1>Lyrics Exporter</h1>
+          <span class="version">v2.0 Pro</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Status Card -->
+    <div class="status-card" id="statusCard">
+      <div id="status" class="status-content">
+        <p class="status-text info">Looking for lyrics... Open a song in Moises Studio.</p>
+      </div>
+    </div>
+
+    <!-- Export Button -->
+    <button class="btn-primary" id="exportBtn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="7 10 12 15 17 10"></polyline>
+        <line x1="12" y1="15" x2="12" y2="3"></line>
+      </svg>
+      Export Lyrics
+    </button>
+
+    <!-- Stats Section -->
+    <section class="stats-section" id="statsSection" style="display: none;">
+      <h2 class="section-title">Last Export</h2>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="stat-label">File:</span>
+          <span class="stat-value" id="statFilename">-</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Lines:</span>
+          <span class="stat-value" id="statLines">-</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Format:</span>
+          <span class="stat-value" id="statFormat">-</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Confidence:</span>
+          <span class="stat-value" id="statConfidence">-</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Settings Section -->
+    <section class="settings">
+      <h2 class="section-title">Settings</h2>
+
+      <div class="field">
+        <label for="format">Format</label>
+        <div class="select-wrapper">
+          <select id="format" class="input">
+            <option value="ttml">TTML (Apple Music)</option>
+            <option value="lrc">LRC (Standard synced)</option>
+            <option value="lrc-enhanced">LRC Enhanced (Word by word)</option>
+            <option value="srt">SRT (Subtitles)</option>
+            <option value="txt">TXT (Plain text)</option>
+            <option value="json">JSON (Raw data)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="offset">Time offset</label>
+        <input type="text" id="offset" class="input" placeholder="-200ms or 0.5s" value="-200ms">
+      </div>
+
+      <div class="field">
+        <label for="precision">Precision (decimals)</label>
+        <div class="select-wrapper">
+          <select id="precision" class="input">
+            <option value="3">3 decimals (0.001s)</option>
+            <option value="2">2 decimals (0.01s)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="gapSec">Instrumental gap threshold (sec)</label>
+        <input type="number" id="gapSec" class="input" min="1" max="60" value="15">
+      </div>
+
+      <div class="field">
+        <label for="confWarn">Confidence threshold</label>
+        <input type="number" id="confWarn" class="input" min="0" max="1" step="0.05" value="0.7">
+      </div>
+
+      <div class="toggle-list">
+        <label class="toggle-item">
+          <span>Instrumental breaks (♪)</span>
+          <input type="checkbox" id="instrumental" checked>
+          <span class="toggle-switch"></span>
+        </label>
+
+        <label class="toggle-item">
+          <span>Title in Title Case</span>
+          <input type="checkbox" id="titleCase" checked>
+          <span class="toggle-switch"></span>
+        </label>
+      </div>
+
+      <div class="field">
+        <label for="manualUrl">Manual lyrics JSON URL</label>
+        <div class="input-group">
+          <input type="text" id="manualUrl" class="input" placeholder="https://api.moises.ai/...">
+          <button type="button" id="clearUrlBtn" class="btn-secondary" title="Clear">✕</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <span>Moises Lyrics Exporter Pro</span>
+    </footer>
+
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

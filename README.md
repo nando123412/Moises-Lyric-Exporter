@@ -10,7 +10,7 @@ A Chrome extension that adds a **Lyrics** tab to the export dialog in [Moises St
 
 - **Native-looking UI inside Moises.** A new **Lyrics** tab appears next to the existing tabs in Moises' export dialog, styled with Moises' own components.
 - **Five export formats:** TTML, LRC, SRT, TXT and JSON (raw data).
-- **Two timing modes:** *Regel voor Regel* (line by line) and *Woord voor woord* (word by word).
+- **Two timing modes:** *Line by line* and *Word by word*.
 - **Syllable timing in TTML.** In word-by-word mode, words are split into per-syllable `<span>`s (Apple Music style) when Moises provides syllable data.
 - **LRC Enhanced** (word-by-word LRC) when using LRC in word mode.
 - **Instrumental markers** (`♪`) inserted in LRC files for long gaps between lines.
@@ -48,8 +48,8 @@ The extension is not (yet) on the Chrome Web Store, so you install it manually a
 3. Click the new **Lyrics** tab.
 4. Choose:
    - **File format**: TTML, LRC, SRT, TXT or JSON
-   - **Timing modus**: *Regel voor Regel* or *Woord voor woord* (only applies to TTML and LRC; dimmed for the other formats)
-   - **Instrumentale pauzes**: on/off (adds `♪` markers to LRC files)
+   - **Timing mode**: *Line by line* or *Word by word* (only applies to TTML and LRC; dimmed for the other formats)
+   - **Instrumental breaks**: on/off (adds `♪` markers to LRC files)
 5. Click **Export Lyrics**. The file downloads as `<Song Title>.<ext>`.
 
 Your choices are saved automatically and are shared with the toolbar popup.
@@ -58,7 +58,7 @@ Clicking any of Moises' own tabs closes the Lyrics view and brings back Moises' 
 
 ### Exporting from the toolbar popup
 
-Click the extension icon while on `studio.moises.ai`, adjust the settings, and press **Exporteer Lyrics** (or `Ctrl/Cmd + Enter`).
+Click the extension icon while on `studio.moises.ai`, adjust the settings, and press **Export Lyrics** (or `Ctrl/Cmd + Enter`).
 
 ---
 
@@ -102,14 +102,14 @@ Spans that directly follow each other without whitespace form a single word; whi
 
 | Setting | Default | Description |
 | --- | --- | --- |
-| Formaat | LRC | Export format (TTML, LRC, LRC Enhanced, SRT, TXT, JSON). |
-| Tijdsverschuiving (Offset) | `-200ms` | Shifts all timestamps. Accepts `-200ms`, `+0.5s`, `1.2`, ... |
-| Precisie (Decimalen) | 3 | Decimals in LRC timestamps (`0.001s` or `0.01s`). |
-| Instr. pauze drempel (sec) | 15 | Minimum gap between lines before a `♪` marker is inserted. |
-| Vertrouwensdrempel | 0.7 | Words below this confidence are counted as "low confidence" in the export stats. |
-| Instrumentale pauzes | on | Add `♪` markers to LRC files. |
-| Titel in Title Case | on | Convert the song title used as the filename to Title Case. |
-| Handmatige Lyrics JSON URL | empty | Optional fallback: paste a `lyrics.json` URL from `api.moises.ai` / `d1.moises.ai` if automatic detection fails. |
+| Format | LRC | Export format (TTML, LRC, LRC Enhanced, SRT, TXT, JSON). |
+| Time offset | `-200ms` | Shifts all timestamps. Accepts `-200ms`, `+0.5s`, `1.2`, ... |
+| Precision (decimals) | 3 | Decimals in LRC timestamps (`0.001s` or `0.01s`). |
+| Instrumental gap threshold (sec) | 15 | Minimum gap between lines before a `♪` marker is inserted. |
+| Confidence threshold | 0.7 | Words below this confidence are counted as "low confidence" in the export stats. |
+| Instrumental breaks | on | Add `♪` markers to LRC files. |
+| Title in Title Case | on | Convert the song title used as the filename to Title Case. |
+| Manual lyrics JSON URL | empty | Optional fallback: paste a `lyrics.json` URL from `api.moises.ai` / `d1.moises.ai` if automatic detection fails. |
 
 ---
 
@@ -139,7 +139,7 @@ Everything runs locally in your browser. Lyrics and settings are stored in `chro
 ## Troubleshooting
 
 **"Could not locate lyrics.json. Please ensure lyrics panel is open."**
-Open the song's lyrics panel in Moises so the lyrics get loaded, wait a moment, then try again. Refreshing the page and reopening the song also helps. As a last resort, paste the `lyrics.json` URL into **Handmatige Lyrics JSON URL** in the popup.
+Open the song's lyrics panel in Moises so the lyrics get loaded, wait a moment, then try again. Refreshing the page and reopening the song also helps. As a last resort, paste the `lyrics.json` URL into **Manual lyrics JSON URL** in the popup.
 
 **The Lyrics tab doesn't appear in the export dialog.**
 Reload the extension in `chrome://extensions` and refresh Moises. The tab is added by matching Moises' current export dialog layout, so a Moises UI update can break it. Please open an issue and include the dialog's HTML.
@@ -148,7 +148,7 @@ Reload the extension in `chrome://extensions` and refresh Moises. The tab is add
 Refresh `studio.moises.ai` after installing or reloading the extension.
 
 **The export is offset from the audio.**
-Adjust **Tijdsverschuiving (Offset)** in the popup, for example `-200ms` or `+300ms`.
+Adjust **Time offset** in the popup, for example `-200ms` or `+300ms`.
 
 **Word-by-word is greyed out.**
 Word timing only applies to TTML and LRC. Switch the file format to one of those.
@@ -161,7 +161,6 @@ Word timing only applies to TTML and LRC. Switch the file format to one of those
 - Word and syllable timing are only as good as the data Moises provides for the song.
 - In LRC Enhanced output, words containing punctuation (such as a comma) can end up attached to the previous word.
 - The confidence statistics currently read a `confidence` field, while Moises' data uses `score`, so the average shows as `1.00`.
-- The Dutch labels in the UI are currently not translatable.
 
 ---
 
@@ -183,5 +182,4 @@ This is an independent, unofficial tool. You need your own Moises account, and i
 
 ## License
 
-Copyright (c) 2026 Nandoothjuuh. All rights reserved.
-This code is provided for use only. No permission is granted to modify or distribute it without the author's written consent.
+Add your license here (for example MIT).
